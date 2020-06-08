@@ -10,8 +10,8 @@ try:
     soup = BeautifulSoup(response.text, "html.parser")
 
     block = soup.find(id='block-wordoftheday').findAll('a')
-    word = block[0].contents[0]
-    info = block[1].contents[0][:-2]
+    word = block[0].contents[0].replace('\u00AD', '')
+    info = block[1].contents[0][:-2].replace('\u00AD', '')
 
 
     minus = ''
@@ -19,7 +19,7 @@ try:
         minus += '-'
 
     print(colored(minus, 'yellow'))
-    print(colored('Wort des Tages: ', 'green') + colored(word, 'cyan', attrs=['bold']) + '\n' + colored('Wortart:        ', 'green') + colored(info, 'cyan'))
+    print(colored('Wort des Tages: ', 'green') + colored(word, 'cyan', attrs=['bold']) + '\n' + colored('Bedeutung:      ', 'green') + colored(info, 'cyan'))
     print(colored(minus, 'yellow'))
 except ConnectionError as e:
     print(colored('No Internet Connection', 'red', attrs=['bold', 'blink']))
