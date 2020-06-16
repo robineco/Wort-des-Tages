@@ -9,3 +9,11 @@ Bedeutung:      wohin wird das führen?; wer weiß
 -------------------------------------------------
 
 ```
+
+```bash
+-----------------------------------------------------
+Wort des Tages: Solarplexus
+Bedeutung:      Substantiv, maskulin – Sonnengeflecht
+-----------------------------------------------------
+
+```
