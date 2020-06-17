@@ -3,17 +3,13 @@ Get the word of the day from https://www.duden.de/wort-des-tages
 
 ## Example
 ```bash
--------------------------------------------------
-Wort des Tages: quo vadis?
-Bedeutung:      wohin wird das führen?; wer weiß
--------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
+Wort des Tages: fudit
+Häufigkeit:     ▮▯▯▯▯
+Worttrennung:   fu|dit
+Bedeutung:      Aufschrift auf gegossenen Kunstwerken und Glocken hinter dem Namen des Künstlers oder Gießers
+Herkunft:       lateinisch; „hat (es) gegossen“
+-------------------------------------------------------------------------------------------------------------
 
 ```
 
-```bash
------------------------------------------------------
-Wort des Tages: Solarplexus
-Bedeutung:      Substantiv, maskulin – Sonnengeflecht
------------------------------------------------------
-
-```
