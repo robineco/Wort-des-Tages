@@ -3,73 +3,91 @@ from termcolor import colored
 from bs4 import BeautifulSoup
 import requests
 
-lenOfLongestText = 5
+len_of_longest_text = 5
 
 
-def createFrequency(full, empty):
-    wordFrequency = ''
-    for i in range(full):
-            wordFrequency += '▮'
+def create_frequency(full, empty):
+    word_frequency = ''
+    for _ in range(full):
+            word_frequency += '▮'
         
-    for i in range(empty):
-        wordFrequency += '▯'
+    for _ in range(empty):
+        word_frequency += '▯'
     
-    return wordFrequency
+    return word_frequency
 
 
-def updateLongestText(text):
-    global lenOfLongestText
-    if len(text) > lenOfLongestText:
-        lenOfLongestText = len(text)
+def update_longest_text(text):
+    global len_of_longest_text
+    if len(text) > len_of_longest_text:
+        len_of_longest_text = len(text)
 
 
-def printSeperator():
+def print_seperator():
     minus = ''
-    for i in range(16 + lenOfLongestText):
+    for _ in range(16 + len_of_longest_text):
         minus += '-'
     print(colored(minus, 'yellow'))
 
 
 def main():
     try:
-        baseUrl = 'https://www.duden.de'
-        wordOfTheDayUrl = '/wort-des-tages'
+        baseurl = 'https://www.duden.de'
+        word_of_the_day_url = '/wort-des-tages'
 
-        response = requests.get(baseUrl + wordOfTheDayUrl)
+        response = requests.get(baseurl + word_of_the_day_url)
 
         soup = BeautifulSoup(response.text, "html.parser")
 
         block = soup.find(id='block-wordoftheday').find('a').attrs['href']
-        wordUrl = baseUrl + block
+        word_url = baseurl + block
 
-        response = requests.get(wordUrl, "html.parser")
+        response = requests.get(word_url, "html.parser")
         soup = BeautifulSoup(response.text, "html.parser")
 
         
         word = soup.find("span", {"class": "lemma__main"}).text
         word = word.replace('\u00AD', '')
-        updateLongestText(word)
+        update_longest_text(word)
 
-        full = len(soup.find("span", {"class": "shaft__full"}).text)
-        empty = len(soup.find("span", {"class": "shaft__empty"}).text)
-        wordFrequency = createFrequency(full, empty)
+        wordfrequency = ''
+        try:
+            full = len(soup.find("span", {"class": "shaft__full"}).text)
+            empty = len(soup.find("span", {"class": "shaft__empty"}).text)
+            wordfrequency = create_frequency(full, empty)
+        except AttributeError:
+            wordfrequency = 'nicht verfügbar'
         
-        rechtschreibung = soup.find(id='rechtschreibung').find('dd').text
-        updateLongestText(rechtschreibung)
-        bedeutung = soup.find(id='bedeutung').find('p').text
-        updateLongestText(bedeutung)
-        herkunft = soup.find(id='herkunft').find('p').text
-        updateLongestText(herkunft)
+        spelling = ''
+        try:
+            spelling = soup.find(id='rechtschreibung').find('dd').text
+        except AttributeError:
+            spelling = 'nicht verfügbar'
+        update_longest_text(spelling)
 
-        printSeperator()
+        meaning = ''
+        try:
+            meaning = soup.find(id='bedeutung').find('p').text
+        except AttributeError:
+            meaning = 'nicht verfügbar'
+        update_longest_text(meaning)
+
+        origin = ''
+        try:
+            origin = soup.find(id='herkunft').find('p').text
+        except AttributeError:
+            origin = 'nicht verfügbar'
+        update_longest_text(origin)
+
+        print_seperator()
         print(colored('Wort des Tages: ', 'green') + colored(word, 'cyan'))
-        print(colored('Häufigkeit:     ', 'green') + colored(wordFrequency, 'cyan'))
-        print(colored('Worttrennung:   ', 'green') + colored(rechtschreibung, 'cyan'))
-        print(colored('Bedeutung:      ', 'green') + colored(bedeutung, 'cyan'))
-        print(colored('Herkunft:       ', 'green') + colored(herkunft, 'cyan'))
-        printSeperator()
+        print(colored('Häufigkeit:     ', 'green') + colored(wordfrequency, 'cyan'))
+        print(colored('Worttrennung:   ', 'green') + colored(spelling, 'cyan'))
+        print(colored('Bedeutung:      ', 'green') + colored(meaning, 'cyan'))
+        print(colored('Herkunft:       ', 'green') + colored(origin, 'cyan'))
+        print_seperator()
 
-    except ConnectionError as e:
+    except ConnectionError:
         print(colored('No Internet Connection', 'red', attrs=['bold', 'blink']))
 
 if __name__ == "__main__":
