@@ -1,5 +1,5 @@
 # Das Wort des Tages
-Get the word of the day from https://www.duden.de/wort-des-tages
+This Web Scraper retrieves the word of the day from https://www.duden.de/wort-des-tages and searches for the frequency, word division, meaning and origin of the word.
 
 ## Installation
 ```bash
