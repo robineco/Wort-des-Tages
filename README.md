@@ -12,4 +12,12 @@ Herkunft:       lateinisch; „hat (es) gegossen“
 -------------------------------------------------------------------------------------------------------------
 
 ```
-
+```bash
+-----------------------------------------------------------------------------------------------------------------------------------------
+Wort des Tages: mau
+Häufigkeit:     ▮▮▯▯▯
+Worttrennung:   mau
+Bedeutung:      nicht verfügbar
+Herkunft:       wohl zusammengezogen aus flau und matt, vielleicht auch zu mauen in der älteren Bedeutung „weinerlich, verdrießlich sein“
+-----------------------------------------------------------------------------------------------------------------------------------------
+```
