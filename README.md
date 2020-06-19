@@ -4,7 +4,8 @@ Get the word of the day from https://www.duden.de/wort-des-tages
 ## Installation
 ```bash
 pip install -r requirements.txt
-
+```
+```bash
 python word.py
 
 ```
