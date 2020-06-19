@@ -1,6 +1,14 @@
 # Das Wort des Tages
 Get the word of the day from https://www.duden.de/wort-des-tages
 
+## Installation
+```bash
+pip install -r requirements.txt
+
+python word.py
+
+```
+
 ## Example
 ```bash
 -------------------------------------------------------------------------------------------------------------
